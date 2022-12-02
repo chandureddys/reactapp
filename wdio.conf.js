@@ -12,4 +12,5 @@ process.argv.forEach((arg) => {
         console.log("local");
         break;
   }
+  }
 });

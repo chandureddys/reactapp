@@ -29,7 +29,8 @@ jobs:
         with:
           run: npm list
           script: |
-            const Octokit = require("octokit");
+            const { Octokit } = require("@octokit/core");
+            console.log(Octokit)
             const { data: root } = await Octokit.request("GET /")
             github.rest.issues.get({
               issue_number: context.issue.number,

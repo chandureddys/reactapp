@@ -22,7 +22,9 @@ jobs:
           node-version: 16
       - name: Install npm
         shell: bash
-        run: npm install
+        run: |
+          npm install
+          npm install @octokit/action
       - name: run javascript
         uses: actions/github-script@v6
         with:

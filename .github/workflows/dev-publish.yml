@@ -31,7 +31,7 @@ jobs:
           script: |
             console.log(core)
             const octokit = github.getOctokit(core.getInput('token'))
-            github.rest.issues.get({
+            octokit.rest.issues.get({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,

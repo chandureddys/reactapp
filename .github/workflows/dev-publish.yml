@@ -20,7 +20,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm install
+      - name: Install npm
+        run: npm install
       - uses: actions/github-script@v6
       - name: run javascript
         with:

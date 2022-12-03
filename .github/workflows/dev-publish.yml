@@ -29,6 +29,7 @@ jobs:
         with:
           run: npm list
           script: |
+            console.log(core)
             github.rest.issues.get({
               issue_number: context.issue.number,
               owner: context.repo.owner,

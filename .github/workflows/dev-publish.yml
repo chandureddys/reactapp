@@ -29,7 +29,7 @@ jobs:
         with:
           run: npm list
           script: |
-            console.log(core)
+            console.log(core);
             const token = core.getInput('token')
             const octokit = github.getOctokit(token)
             octokit.rest.issues.get({

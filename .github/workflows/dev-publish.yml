@@ -29,7 +29,6 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const { octokit } = require("octokit");
             const { data: root } = await octokit.request("GET /");
             github.rest.issues.get({
               issue_number: context.issue.number,

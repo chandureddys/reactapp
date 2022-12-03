@@ -24,12 +24,12 @@ jobs:
         shell: bash
         run: |
           npm install
-          npm install @octokit/action
       - name: run javascript
         uses: actions/github-script@v6
         with:
           script: |
-            const { data: root } = await octokit.request("GET /");
+            const x = require('octokit')
+            const { data: root } = await x.request("GET /")
             github.rest.issues.get({
               issue_number: context.issue.number,
               owner: context.repo.owner,

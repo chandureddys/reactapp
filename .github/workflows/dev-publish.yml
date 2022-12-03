@@ -30,7 +30,8 @@ jobs:
           run: npm list
           script: |
             console.log(core)
-            const octokit = github.getOctokit(core.getInput('token'))
+            const token = core.getInput('token')
+            const octokit = github.getOctokit(token)
             octokit.rest.issues.get({
               issue_number: context.issue.number,
               owner: context.repo.owner,

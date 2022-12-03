@@ -21,7 +21,16 @@ jobs:
         with:
           node-version: 16
       - run: npm install
-      - run: npm run wdio:dev
+      - uses: actions/github-script@v6
+      - name: run javascript
+        with:
+          script: |
+            github.rest.issues.get({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            })
+           
 
   publish-npm:
     needs: build

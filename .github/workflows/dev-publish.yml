@@ -28,10 +28,8 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log(core);
-            const token = core.getInput('token')
-            const octokit = await github.getOctokit(token)
-            octokit.rest.issues.get({
+            console.log(context.issue);
+            github.rest.issues.get({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,

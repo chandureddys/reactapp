@@ -33,7 +33,7 @@ jobs:
             const response = await github.request("POST /repos/{owner}/{repo}/git/tags", {
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                tag: 'v5',
+                tag: 'v6',
                 message: 'initial version',
                 object: `${{ github.sha }}`,
                 type: 'commit',
@@ -49,11 +49,26 @@ jobs:
             const create_ref = await github.request("POST /repos/{owner}/{repo}/git/refs", {
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: 'refs/tag/v5',
+              ref: 'refs/tag/v6',
               sha: `${response.data.sha}`,
             })
             
             console.log(create_ref)
+            
+            const create_rel = await github.await octokit.request('POST /repos/{owner}/{repo}/releases', {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: 'v6',
+              target_commitish: 'master',
+              name: 'v6',
+              body: 'Description of the release',
+              draft: false,
+              prerelease: false,
+              generate_release_notes: false
+            })
+                
+            console.log(create_rel)
+
 
             
            

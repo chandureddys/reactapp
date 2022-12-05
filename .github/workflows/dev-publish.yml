@@ -21,6 +21,8 @@ jobs:
       - name: push tag
         shell: bash
         run: |
+         git config --global user.email "csreddy.512@gmail.com"
+         git config --global user.name "Chandra sekhar"
          git tag -a "V1.1" -m "create a tag"
          git push origin "V1.1"
         

@@ -31,18 +31,11 @@ jobs:
         with:
           script: |
             console.log(context.issue);
-            const response = await github.request("POST /repos/{owner}/{repo}/issues", {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: "Hello",
-              body: "I created this issue using Octokit!",
-            });
             
-            console.log(response)
             const refsResponse = await github.request("POST /repos/{owner}/{repo}/git/refs", {
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: 'ref/tag/${{ env.TAG_NAME }}',
+              ref: `ref/tag/${{ env.TAG_NAME }}`,
               sha: ${{ github.sha }},
             });
             

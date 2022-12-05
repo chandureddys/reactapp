@@ -30,13 +30,14 @@ jobs:
           script: |
             console.log(context.issue);
             const {SHA} = process.env
-            const commit = await github.rest.repos.getCommit({
+            const response = github.rest.equest("POST /repos/{owner}/{repo}/issues", {
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: `${SHA}`
-            })
+              title: "Hello, world!",
+              body: "I created this issue using Octokit!",
+            });
             
-            console.log(commit)
+            console.log(response)
            
 
   publish-npm:

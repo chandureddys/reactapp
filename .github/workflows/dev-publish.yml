@@ -32,17 +32,7 @@ jobs:
           script: |
             console.log(context.issue);
             console.log(process.env);
-            const refsResponse = await github.request("POST /repos/{owner}/{repo}/git/refs", {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: 'ref/tag/feature',
-              sha: ${{ github.sha }},
-            });
             
-            console.log(refsResponse)
-           
-           
-
   publish-npm:
     needs: build
     runs-on: ubuntu-latest

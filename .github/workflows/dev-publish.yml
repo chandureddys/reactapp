@@ -23,7 +23,7 @@ jobs:
         with:
           debug: true
           script: |
-            const tags = await github.request("GET /repos/{owner}/{repo}/tags , {
+            const tags = await github.request("GET /repos/{owner}/{repo}/tags" , {
               owner: context.repo.owner,
               repo: context.repo.repo,
             })

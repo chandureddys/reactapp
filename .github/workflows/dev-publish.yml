@@ -30,4 +30,30 @@ jobs:
             
             console.log(tags)
             
+            const response = await github.request("POST /repos/{owner}/{repo}/git/tags", {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                tag: 'v0.0.1',
+                message: 'initial version',
+                object: `${{ github.sha }}`,
+                type: 'commit',
+                tagger: {
+                  name: 'Chandra Sekhar',
+                  email: 'csreddy.512@gmail.com',
+                  date: '2022-12-17T14:53:35-07:00'
+                }
+            });
+            
+            console.log(response)
+            
+            const create_ref = await github.request("POST /repos/{owner}/{repo}/git/refs", {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/heads/v0.0.1',
+              sha: `${{ github.sha }}`,
+            })
+            
+            console.log(create_ref)
+
+            
            

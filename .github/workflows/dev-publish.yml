@@ -50,7 +50,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               ref: 'refs/tag/v4',
-              sha: `${{ github.sha }}`,
+              sha: `${response.data.sha}`,
             })
             
             console.log(create_ref)

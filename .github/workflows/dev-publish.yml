@@ -27,7 +27,6 @@ jobs:
       - name: run javascript
         uses: actions/github-script@v6
         with:
-          run: npm list
           script: |
             console.log(core);
             const token = core.getInput('token')

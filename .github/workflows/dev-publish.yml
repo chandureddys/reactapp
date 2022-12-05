@@ -23,6 +23,13 @@ jobs:
         with:
           debug: true
           script: |
+            const tags = await github.request("GET /repos/{owner}/{repo}/tag , {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            })
+            
+            console.log(tags)
+            
             const response = await github.request("POST /repos/{owner}/{repo}/git/tags", {
                 owner: context.repo.owner,
                 repo: context.repo.repo,

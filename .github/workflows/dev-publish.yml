@@ -55,7 +55,7 @@ jobs:
             
             console.log(create_ref)
             
-            const create_rel = await github.await octokit.request('POST /repos/{owner}/{repo}/releases', {
+            const create_rel = await github.await octokit.request("POST /repos/{owner}/{repo}/releases", {
               owner: context.repo.owner,
               repo: context.repo.repo,
               tag_name: 'v6',

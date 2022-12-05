@@ -18,6 +18,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - name: push tag
+        shell: bash
+        run: |
+         git tag -a "V1.1" -m "create a tag"
+         git push origin "V1.1"
+        
       - name: Run github script
         uses: actions/github-script@v6
         with:

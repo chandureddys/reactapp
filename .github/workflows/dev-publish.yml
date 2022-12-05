@@ -27,7 +27,7 @@ jobs:
             const create_ref = await github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: 'refs/tag/v8',
+              ref: 'refs/tags/v9',
               sha: context.sha,
             })
             

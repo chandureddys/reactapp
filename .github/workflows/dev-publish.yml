@@ -7,6 +7,8 @@ on:
   push:
     branches: 
       - main
+env:
+  TAG_NAME: feature
 
 jobs:
   build:
@@ -29,14 +31,24 @@ jobs:
         with:
           script: |
             console.log(context.issue);
-            const response = github.request("POST /repos/{owner}/{repo}/issues", {
+            const response = await github.request("POST /repos/{owner}/{repo}/issues", {
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: "Hello, world!",
+              title: "Hello",
               body: "I created this issue using Octokit!",
             });
             
             console.log(response)
+            const tag_name = ${{ env.TAG_NAME }}
+            
+            const refsResponse = await github.request("POST /repos/{owner}/{repo}/git/refs", {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: `ref/tag/${{ env.TAG_NAME }}`,
+              sha: ${{ github.sha }},
+            });
+            
+            console.log(refsResponse)
            
 
   publish-npm:

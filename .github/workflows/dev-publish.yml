@@ -30,7 +30,7 @@ jobs:
           script: |
             console.log(context.issue);
             const {SHA} = process.env
-            const response = github.rest.equest("POST /repos/{owner}/{repo}/issues", {
+            const response = github.rest.request("POST /repos/{owner}/{repo}/issues", {
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: "Hello, world!",

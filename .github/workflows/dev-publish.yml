@@ -29,11 +29,14 @@ jobs:
         with:
           script: |
             console.log(context.issue);
-            github.rest.issues.get({
-              issue_number: context.issue.number,
+            const {SHA} = process.env
+            const commit = await github.rest.repos.getCommit({
               owner: context.repo.owner,
               repo: context.repo.repo,
+              ref: `${SHA}`
             })
+            
+            console.log(commit)
            
 
   publish-npm:

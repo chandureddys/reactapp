@@ -27,12 +27,6 @@ jobs:
             const tag_name = process.env.TAG_NAME
             const ref_val = `ref/tag/${tag_name}`
             console.log(ref_val)
-            const refsResponse = await github.request("POST /repos/{owner}/{repo}/git/refs", {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: ref_val,
-              sha: ${{ github.sha }},
-            });
             
             
   publish-npm:

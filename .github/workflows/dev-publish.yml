@@ -33,7 +33,7 @@ jobs:
             const response = await github.request("POST /repos/{owner}/{repo}/git/tags", {
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                tag: 'v0.0.1',
+                tag: 'v4',
                 message: 'initial version',
                 object: `${{ github.sha }}`,
                 type: 'commit',
@@ -49,7 +49,7 @@ jobs:
             const create_ref = await github.request("POST /repos/{owner}/{repo}/git/refs", {
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: 'refs/heads/v0.0.1',
+              ref: 'refs/tag/v4',
               sha: `${{ github.sha }}`,
             })
             

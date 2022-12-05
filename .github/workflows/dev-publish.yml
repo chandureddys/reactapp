@@ -32,7 +32,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               sha: `${{ github.sha }}`,
-              ref: `ref/tag/${{process.env.TAG_NAME}}`
+              ref: `ref/tag/${{ref_val}}`
             });
             
             

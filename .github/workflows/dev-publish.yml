@@ -15,18 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Install Chrome
-        shell: bash
-        run: |
-          sudo apt-get  install chromium-browser
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Install npm
-        shell: bash
-        run: |
-          npm install
-      - name: run javascript
+      - name: Run github script
         uses: actions/github-script@v6
         with:
           script: |
